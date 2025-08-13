@@ -1,0 +1,25 @@
+Requirements
+CRUD: (GET, GET by Id, POST, PUT, PATCH, DELETE) 
+
+Artists CRUD
+Álbum CRUD
+Song CRUD
+Genre CRUD
+Get all the albums by an specific artist
+Get all songs with filters options
+Filter songs by genre (genre name)
+Get songs from a specific album
+Get all songs from a specific artist
+Get list of songs with pagination
+Get list of songs of a specific artist with pagination
+Search songs by release year
+Unit tests
+API DOCS - Ex: Swagger (OPTIONAL)
+
+make the script exeutable by performing
+
+chmod +x start_postgres.sh
+
+then run it
+
+/start_postgres.sh

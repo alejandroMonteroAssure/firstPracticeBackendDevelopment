@@ -1,0 +1,50 @@
+@startuml
+title "Song Library - Entity Relationship Diagram"
+
+entity "Artist" as Artist {
+   artist_id: PK serial, 
+   --
+   name: varchar(255)
+   profile_img: varchar(255)
+   name: varchar (255)
+   debut_date: timestamp
+}
+
+entity "Album" as Album {
+   album_id: PK serial, 
+   --
+   artist_id: FK
+   title: varchar(255)
+   cover_img: varchar(255)
+   release_date: timestamp
+}
+
+entity "Song" as Song {
+   song_id: PK serial,
+   --
+   album_id: FK
+   title: varchar(255)
+   lyrics: varchar(1000)
+   cover_img: varchar(255)
+   release_date: timestamp
+   duration: time
+}
+
+entity "Genre" as Genre{
+  genre_id: PK serial
+  --
+  name: varchar(255)
+  description: varchar(255)
+}
+
+entity "SongGenre" as SongGenre {
+  genre_id: FK PK
+  song_id: FK PK
+}
+
+Artist ||--o{ Album : "releases"
+Album ||--o{ Song : "contains"
+Song ||--o{ SongGenre : "classified as"
+Genre ||--o{ SongGenre : "tagged to"
+
+@enduml
