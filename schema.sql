@@ -1,4 +1,4 @@
--- Active: 1755101433765@@127.0.0.1@5432@sbolify
+-- Active: 1755127822220@@127.0.0.1@5432@sbolify
 create database sbolify;
 
 create table artists(
