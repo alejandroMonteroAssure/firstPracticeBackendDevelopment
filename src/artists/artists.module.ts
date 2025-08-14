@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ArtistService } from './application/artist.service';
 import { ArtistController } from './infrastructure/artist.controller';
 import { ArtistTypeOrmEntity } from './infrastructure/artist.typeorm.entity';
-import { IArtistRepository } from './domain/artist.repository';
+import { IArtistRepository } from './application/artist.repository';
 import { ArtistTypeOrmRepository } from './infrastructure/artist.typeorm.repository';
 
 @Module({
@@ -12,9 +12,7 @@ import { ArtistTypeOrmRepository } from './infrastructure/artist.typeorm.reposit
   providers: [
     ArtistService,
     {
-      // Cuando alguien pida `IArtistRepository`...
       provide: IArtistRepository,
-      // ...dale una instancia de `ArtistTypeOrmRepository`.
       useClass: ArtistTypeOrmRepository,
     },
   ],

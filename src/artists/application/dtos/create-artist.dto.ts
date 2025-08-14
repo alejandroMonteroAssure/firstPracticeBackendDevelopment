@@ -1,6 +1,6 @@
-import { IsString, IsNotEmpty, IsOptional, IsDateString, IsUrl } from 'class-validator';
+import {IsString, IsNotEmpty, IsOptional, IsDateString, IsUrl} from 'class-validator';
 
-export class CreateArtistDto {
+export class CreateArtistDto{
   @IsString()
   @IsNotEmpty()
   name: string;

@@ -1,8 +1,8 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
-import { IArtistRepository } from '../domain/artist.repository';
+import { IArtistRepository } from './artist.repository';
 import { CreateArtistDto } from './dtos/create-artist.dto';
 import { UpdateArtistDto } from './dtos/update-artist.dto';
-import { Artist } from '../domain/artist.entity';
+import { IArtist } from '../domain/artist.entity';
 
 @Injectable()
 export class ArtistService {
@@ -12,15 +12,15 @@ export class ArtistService {
     private readonly artistRepository: IArtistRepository,
   ) {}
 
-  async create(createArtistDto: CreateArtistDto): Promise<Artist> {
+  async create(createArtistDto: CreateArtistDto): Promise<IArtist> {
     return this.artistRepository.create(createArtistDto);
   }
 
-  async findAll(): Promise<Artist[]> {
+  async findAll(): Promise<IArtist[]> {
     return this.artistRepository.findAll();
   }
 
-  async findOne(id: number): Promise<Artist> {
+  async findOne(id: number): Promise<IArtist> {
     const artist = await this.artistRepository.findById(id);
     if (!artist) {
       throw new NotFoundException(`Artist with ID #${id} not found`);
@@ -28,7 +28,7 @@ export class ArtistService {
     return artist;
   }
 
-  async update(id: number, updateArtistDto: UpdateArtistDto): Promise<Artist> {
+  async update(id: number, updateArtistDto: UpdateArtistDto): Promise<IArtist> {
     const artist = await this.artistRepository.update(id, updateArtistDto);
     if (!artist) {
       throw new NotFoundException(`Artist with ID #${id} not found`);

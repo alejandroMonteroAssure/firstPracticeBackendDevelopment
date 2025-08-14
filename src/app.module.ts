@@ -1,10 +1,8 @@
-// src/app.module.ts
-
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ArtistsModule } from './artists/artists.module'; // 👈 PASO 1: Importa el módulo
+import { ArtistsModule } from './artists/artists.module';
 
 @Module({
   imports: [
@@ -18,7 +16,7 @@ import { ArtistsModule } from './artists/artists.module'; // 👈 PASO 1: Import
       autoLoadEntities: true,
       synchronize: true,
     }),
-    ArtistsModule, // 👈 PASO 2: Añádelo aquí al array de imports
+    ArtistsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
