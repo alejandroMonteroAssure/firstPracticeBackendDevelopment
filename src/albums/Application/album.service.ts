@@ -1,3 +1,5 @@
+/*
+
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { IArtistRepository } from './artist.repository';
 import { CreateArtistDto } from './dtos/create-artist.dto';
@@ -41,3 +43,29 @@ export class ArtistService {
     await this.artistRepository.remove(id);
   }
 }
+
+*/
+
+import { Inject, Injectable } from "@nestjs/common";
+import { IAlbumRepository } from "./album.repository";
+import { CreateAlbumDto } from "./dtos/create-album.dto";
+import { IAlbum } from "../Domain/album.entity";
+
+@Injectable()
+export class AlbumService {
+    constructor (
+        @Inject(IAlbumRepository)
+        private readonly albumRepository: IAlbumRepository
+    ) {}
+    /*
+    create(createAlbumDto: CreateAlbumDto): Promise<IAlbum>;
+        findAll(): Promise<IAlbum[]>;
+        findById(id: number): Promise<IAlbum>;
+        update(id: number, updateAlbumDto: UpdateAlbumDto): Promise<IAlbum | null>;
+        remove(id: number): Promise<void>;
+    */
+   async create(createAlbumDto: CreateAlbumDto): Promise<IAlbum> {
+    return this.albumRepository.create(createAlbumDto);
+   }
+}
+//https://excalidraw.com/#json=xpB71Nhf8ii8pU4iM1kDK,B5OtqCB-l-mxG3PslbOowg
